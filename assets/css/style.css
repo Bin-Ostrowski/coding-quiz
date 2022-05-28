@@ -1,0 +1,109 @@
+* {
+    box-sizing:border-box;
+  }
+  
+  :root {
+    --blavk: black;
+    --purple: #351C75;
+    --pink: #BD60E7;
+    --grey: grey;
+    --white:#FFFFFF;
+    font-size: 62.5%;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+/* HEADER */ 
+  header {
+    padding: 30px;
+    display: flex;
+    flex-wrap: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+  }
+  
+  header p {
+    color: var(--pink);
+  }
+  
+/* MAIN WELCOME PAGE STYLING*/
+
+main {
+      padding: 20px;
+      /*figure out how to shrink to 1/2 the page */
+     
+}
+
+main .page-content {
+    display: flex;
+    flex-direction: column;
+}
+  
+main .welcome-page .title-question {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.content-text {
+    display: flex;
+    font-size: 16px;
+    flex: 50%;
+    justify-content: center; /*why is thi snot working */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.reg-btn {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+/* MAIN QUESTION PAGE */
+
+.question-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px;
+}
+
+.question-page .title-question {
+    display: flex;
+    justify-content: left;
+}
+
+.answer-list {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;   
+}
+
+.btn-answer {
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--purple);
+    color: var(--white);
+    margin: 1.5px;
+}
+
+.answer-result {
+    border-top: solid, color var(--gray);
+}
+
+.result {
+    padding: 20px 0 0 0;
+    color: var(--grey);
+    display: flex;
+}
+

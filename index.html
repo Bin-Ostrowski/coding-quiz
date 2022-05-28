@@ -10,22 +10,37 @@
 
 <body>
     <header>
-        <p id = "high-scores-link"></p>
-        <div id = "countdown"></div>
+        <p id = "high-scores-link" href="#view-high-score">View High Score</p>
+        <div id = "countdown">Time: 0</div>
     </header>
 
     <main id ="page-content" class ="page-content">
-        <h1 id="title-question" class = "title-question"></h1>
-        <p id="content-text" class = "content-text"></p>
-        <section id="buttons" class = "buttons">
-            <div id="reg-btn" class = "reg-btn">
-            </div>
-             <ol id="ordered-list" class ="ordered-list">
-                <li id="btn-answer" class="btn-answer">
+        <section id = "welcome-page" class = "welcome-page">
+            <h1 id="title-question" class = "title-question">Coding Quiz Challenge</h1>
+            <p id="content-text" class = "content-text">fjajkfldjska;fjklds;ajfklsa</p>
+            
+            <div id="buttons" class = "buttons">
+               <button id="reg-btn" class = "reg-btn">Start</button>
+           </div>
+        </section>
+
+        <section id ="question-page" class ="question-page">
+            <h1 id="title-question" class = "title-question"></h1>
+             
+            <ol type="1" id="answer-list" class ="answer-list">
+                <li>
+                    <button id="btn-answer" class="btn-answer"></button>
                 </li>
             </ol>
+         
+            <div id = "answer-result" class ="answer-result">
+                <h2 id = "result" class ="result"></h2>
+            </div>
         </section>
-        <div id ="answer-result" class ="answer-result"></div>
+
+        <section id ="view-high-score">
+        </section>
+        
     </main>
     
     <script src = "./assets/js/script.js"></script>
