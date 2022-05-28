@@ -36,18 +36,19 @@
 main {
       padding: 20px;
       /*figure out how to shrink to 1/2 the page */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
      
 }
-
-main .page-content {
+ 
+.welcome-page  {
     display: flex;
-    flex-direction: column;
-}
-  
-main .welcome-page .title-question {
-    display: flex;
+    padding: 20px;
     justify-content: center;
     font-size: 30px;
+    flex-direction: column;
+     
 }
 
 .content-text {
@@ -62,11 +63,26 @@ main .welcome-page .title-question {
     justify-content: center;
 }
 
-.reg-btn {
+.start-btn {
+    outline: none;
+    border: none;
+    display: inline-block;
     padding: 10px;
     border-radius: 15px;
     background-color: var(--purple);
     color: var(--white);
+    cursor: pointer;
+}
+
+.reg-btn {
+    outline: none;
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: var(--purple);
+    color: var(--white);
+    cursor: pointer;
 }
 
 /* MAIN QUESTION PAGE */
@@ -78,7 +94,7 @@ main .welcome-page .title-question {
     margin: 50px;
 }
 
-.question-page .title-question {
+.title-question {
     display: flex;
     justify-content: left;
 }
@@ -90,10 +106,14 @@ main .welcome-page .title-question {
 }
 
 .btn-answer {
+    outline: none;
+    border: none;
+    display: inline-block;
     padding: 10px;
     border-radius: 15px;
     background-color: var(--purple);
     color: var(--white);
+    cursor: pointer;
     margin: 1.5px;
 }
 
