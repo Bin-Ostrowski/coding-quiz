@@ -27,8 +27,13 @@
     font-size: 1.5rem;
   }
   
-  header p {
+  header button {
+    outline: none;
+    border: none;
+    display: inline-block;
+    background-color: var(--white);
     color: var(--pink);
+    cursor: pointer;
   }
   
 /* MAIN WELCOME PAGE STYLING*/
@@ -39,7 +44,6 @@ main {
       display: flex;
       flex-direction: column;
       justify-content: center;
-     
 }
  
 .welcome-page  {
@@ -49,6 +53,11 @@ main {
     font-size: 30px;
     flex-direction: column;
      
+}
+
+.welcome-page .title-question {
+    display: flex;
+    justify-content: center;
 }
 
 .content-text {
@@ -117,6 +126,7 @@ main {
     margin: 1.5px;
 }
 
+
 .answer-result {
     border-top: solid, color var(--gray);
 }
@@ -127,3 +137,6 @@ main {
     display: flex;
 }
 
+.btn-answer:hover, .reg-btn:hover, .start-btn:hover {
+    background-color: var(--pink);
+}
