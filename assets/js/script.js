@@ -2,6 +2,7 @@ var questionPage = document.querySelector("#question-page");
 var highScoreBtn = document.querySelector("#high-scores-btn")
 var taskIdCounter = 0;
 var userScore = 0;
+var userResult = 0;
 
 //var firstAnswer = //what user first answer was 
 
@@ -107,17 +108,21 @@ var userFirstAnswer = function eventHandeler() {
         // add value to score
         userFirstAnswer = (userScore + 20);
         console.log(userFirstAnswer);
+        userResult = (userResult + 1);
+        console.log(userResult);
 
         // when click button, present next question
         questionPage2();
 
     } else {
         console.log ("false");
-        // when click button, present next question
-        questionPage2();
         // decrease value to score
         userFirstAnswer = (userScore - 20);
         console.log(userFirstAnswer);
+        userResult = (userResult = null);
+        console.log(userResult);
+        // when click button, present next question
+        questionPage2();
     }
 };
 
@@ -138,9 +143,6 @@ var questionPage2 = function () {
         question1.innerHTML = "Second Question";
         questionPage.appendChild(question1);
 
-   // list 4 buttons - assign id's to each button
-    // :hover applied to all buttons to turn color - also removes returned answer
-
     var createAnswerList = function(){
         var answerList = document.createElement("ol"); // why is this not listing with numbers?
             answerList.className = "answer-list";
@@ -152,14 +154,12 @@ var questionPage2 = function () {
             answerBtnOne.textContent = "1correct";
             answerBtnOne.id = "q-2-correct";
             answerList.appendChild(answerBtnOne);
-           
         
         var answerBtnTwo = document.createElement("ListItemButton");
             answerBtnTwo.className="btn-answer";
             answerBtnTwo.textContent = "2false";
             answerBtnTwo.id ="answer-two";
             answerList.appendChild(answerBtnTwo);
-       
       
         var answerBtnThree = document.createElement("ListItemButton");
             answerBtnThree.className="btn-answer";
@@ -173,40 +173,80 @@ var questionPage2 = function () {
             answerBtnFour.textContent = "4false";
             answerBtnFour.id="answer-four";
             answerList.appendChild(answerBtnFour);
+    // create top border with returned value in h2 under answer buttons
+    // var returnAnswerOne = document.createElement("div")
+    // answerList.appendChild(returnAnswerOne);
+    // returnAnswerOne.innerHTML = ('<h2 id = "result" class ="result">' + //returned answer</h2>')
+
+        var resultQuestionOne = document.createElement("h2");
+            resultQuestionOne.className = "answer-result";
+                if (userResult > 0 ) {
+                resultQuestionOne.textContent = "Correct!";
+                } else {
+                    resultQuestionOne.textContent = "Wrong!";
+                };
+            answerList.appendChild(resultQuestionOne);
+           
 
         answerList.addEventListener("click", userSecondAnswer);  
     };
     createAnswerList();
+    //mouse over - result dissapears 
 };
 
 var userSecondAnswer = function eventHandeler() {
     console.log(event.target);
     if (event.target.matches('#q-2-correct')) {
         console.log ("correct");
- 
-        // add value to score
         userSecondAnswer = (userFirstAnswer + (userScore + 20));
         console.log(userSecondAnswer);
 
-        // when click button, present next question
-        questionPage2();
+        allDone();//fix when add all questions
 
     } else {
         console.log ("false");
-        // when click button, present next question
-        questionPage2();
-        // decrease value to score
         userSecondAnswer = (userFirstAnswer + (userScore - 20));
         console.log(userSecondAnswer);
+
+        allDone();//fix when add all questions
     }
 };
 
-// // create top border with returned value in h2 under answer buttons
-//     // var returnAnswerOne = document.createElement("div")
-//     // answerList.appendChild(returnAnswerOne);
-//     // returnAnswerOne.innerHTML = ('<h2 id = "result" class ="result">' + //returned answer</h2>')
+var allDone = function () {
+    function clearcontent(elementID) {
+        document.getElementById(elementID).innerHTML = "";
+    }
+    startBtn = clearcontent('page-content');
+    
+    var allDonePage = document.createElement("div");
+        newPage.appendChild(allDonePage);
+        allDonePage.className = "question-page";
+        allDonePage.id = "question-page";
 
-// };
+    var allDoneTitle = document.createElement ("h1");
+        allDoneTitle.className = "title-question";
+        allDoneTitle.textContent = "All done!"
+        allDonePage.appendChild(allDoneTitle);
+
+    var finalScore = document.createElement ("h2");
+        finalScore.className = "final-score-content"
+        finalScore.textContent = "Your final score is " + " .";//add final score 
+        allDonePage.appendChild(finalScore);
+
+    var enterYourInitials = document.createElement('div');
+        enterYourInitials.className= "enter-initials"
+        enterYourInitials.innerHTML = '<h2 id="final-score-content">Enter initials:</h2>';
+        allDonePage.appendChild(enterYourInitials);
+
+    var formEl = document.createElement('form');
+        formEl.className="initials-form";
+        formEl.id="initials-form"; 
+        enterYourInitials.appendChild(formEl);
+        console.log(formEl);
+
+        formEl.innerHTML='<input id="initials-input" class ="initials-input"></input><button class="start-btn" id ="form-button" type="submit">Submit</button>';
+   
+};
 
 
 

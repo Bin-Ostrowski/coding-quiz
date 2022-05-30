@@ -14,7 +14,7 @@
   body {
     margin: 0;
     padding: 0;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
   
 }
 
@@ -64,7 +64,7 @@ main {
     display: flex;
     font-size: 16px;
     flex: 50%;
-    justify-content: center; /*why is thi snot working */
+    justify-content: center; /*why is this not working */
 }
 
 .buttons {
@@ -106,6 +106,7 @@ main {
 .title-question {
     display: flex;
     justify-content: left;
+    font-size: 30px;
 }
 
 .answer-list {
@@ -124,11 +125,14 @@ main {
     color: var(--white);
     cursor: pointer;
     margin: 1.5px;
+    width: auto;
+    font-size: 14px;
 }
 
 
 .answer-result {
-    border-top: solid, color var(--gray);
+    border-top: solid, color var(--grey);
+    color: var(--grey)
 }
 
 .result {
@@ -139,4 +143,20 @@ main {
 
 .btn-answer:hover, .reg-btn:hover, .start-btn:hover {
     background-color: var(--pink);
+}
+
+.final-score-content{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;   
+    font-size: 20px;
+}
+
+.enter-initials {
+    display: flex;
+    flex-wrap: flex;
+    
+}
+.initials-input {
+    margin: 0 10px 0 10px;
 }
