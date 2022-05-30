@@ -1,6 +1,7 @@
 var questionPage = document.querySelector("#question-page");
 var highScoreBtn = document.querySelector("#high-scores-btn")
 var taskIdCounter = 0;
+var userScore = 0;
 
 //var firstAnswer = //what user first answer was 
 
@@ -41,7 +42,6 @@ var questionPage1 = function () {
         document.getElementById(elementID).innerHTML = "";
     }
     startBtn = clearcontent('page-content');
-
     
     var questionPage = document.createElement("div");
         newPage.appendChild(questionPage);
@@ -65,118 +65,142 @@ var questionPage1 = function () {
         
         var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
             answerBtnOne.className="btn-answer";
-            answerBtnOne.innerHTML = "1false";
-            answerBtnOne.setAttribute("answer-one-id", taskIdCounter);
-            taskIdCounter++;
+            answerBtnOne.textContent = "1false";
+            answerBtnOne.id = "answer-one";
             answerList.appendChild(answerBtnOne);
-            console.log(answerBtnOne);
+           
         
-        var answerBtnTwo = document.createElement("ListItemButton");
-        answerBtnTwo.className="btn-answer";
-        answerBtnTwo.innerHTML = "2false";
-        answerBtnTwo.setAttribute("answer-one-id", taskIdCounter);
-            taskIdCounter++;
-        answerList.appendChild(answerBtnTwo);
-        console.log(answerBtnTwo);
+            var answerBtnTwo = document.createElement("ListItemButton");
+            answerBtnTwo.className="btn-answer";
+            answerBtnTwo.textContent = "2false";
+            answerBtnTwo.id ="answer-two";
+            answerList.appendChild(answerBtnTwo);
+       
       
         var answerBtnThree = document.createElement("ListItemButton");
         answerBtnThree.className="btn-answer";
-        
-        answerBtnThree.innerHTML = "3Correct";
-        answerBtnThree.setAttribute("answer-one-id", taskIdCounter);
-        taskIdCounter++;
+        answerBtnThree.textContent = "3Correct";
+        answerBtnThree.id = "q-1-correct";
         answerList.appendChild(answerBtnThree);
-        console.log(answerBtnThree);
+        
 
         var answerBtnFour = document.createElement("ListItemButton");
         answerBtnFour.className="btn-answer";
-        answerBtnFour.innerHTML = "4false";
-        answerBtnFour.setAttribute("answer-one-id", taskIdCounter);
-        taskIdCounter++;
+        answerBtnFour.textContent = "4false";
+        answerBtnFour.id="answer-four";
         answerList.appendChild(answerBtnFour);
-        console.log(answerBtnFour);       
+       
         answerList.addEventListener("click", userFirstAnswer);
     };
-
     createAnswerList();
-    
-    
 };
-
-var userFirstAnswer = function eventHandeler() {
-    console.log("clicked");
-    // if (userFirstAnswer  === 2 ) {
-    //     console.log ("ture");
-    // }
-};
-
-// };
 
 // if statement: 
 // clicked false buttonId (3 out of 4)- return "wrong" underneath border
-// click correct buttonId - return "correct with points"
-// correct answers assign integer to buttonId
+// click correct buttonId - return "correct with logged points"
 
-// when click button:
-// present next question
-// var questionPage2 = function () {
-//     function clearcontent(elementID) {
-//         document.getElementById(elementID).innerHTML = "";
-//     }
-//     startBtn = clearcontent('page-content');
+var userFirstAnswer = function eventHandeler() {
+    console.log(event.target);
+    if (event.target.matches('#q-1-correct')) {
+        console.log ("correct");
 
+        // add value to score
+        userFirstAnswer = (userScore + 20);
+        console.log(userFirstAnswer);
+
+        // when click button, present next question
+        questionPage2();
+
+    } else {
+        console.log ("false");
+        // when click button, present next question
+        questionPage2();
+        // decrease value to score
+        userFirstAnswer = (userScore - 20);
+        console.log(userFirstAnswer);
+    }
+};
+
+var questionPage2 = function () {
+    function clearcontent(elementID) {
+        document.getElementById(elementID).innerHTML = "";
+    }
+        startBtn = clearcontent('page-content');
     
-//     var questionPage = document.createElement("div");
-//         newPage.appendChild(questionPage);
-//         questionPage.className = "question-page";
-//         questionPage.id = "question-page";
+    var questionPage = document.createElement("div");
+        newPage.appendChild(questionPage);
+        questionPage.className = "question-page";
+        questionPage.id = "question-page";
 
-//     var question1 = document.createElement ("h1");
-//         question1.className = "title-question";
-//         question1.id = "Second-question";
-//         question1.innerHTML = "First Question";
-//         questionPage.appendChild(question1);
+    var question1 = document.createElement ("h1");
+        question1.className = "title-question";
+        question1.id = "Second-question";
+        question1.innerHTML = "Second Question";
+        questionPage.appendChild(question1);
 
-//     // hover over answer list will remove prior answer's return 
-//     var createAnswerList = function(){
-//         var answerList = document.createElement("ol"); // why is this not listing with numbers?
-//         answerList.className = "answer-list";
-//         answerList.id = "answer-list-two";
-//         questionPage.appendChild(answerList);
+   // list 4 buttons - assign id's to each button
+    // :hover applied to all buttons to turn color - also removes returned answer
+
+    var createAnswerList = function(){
+        var answerList = document.createElement("ol"); // why is this not listing with numbers?
+            answerList.className = "answer-list";
+            answerList.id = "answer-list-one";
+            questionPage.appendChild(answerList);
         
-//         var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
-//             answerBtnOne.className="btn-answer";
-//             answerBtnOne.innerHTML = "1false";
-//             answerBtnOne.setAttribute("answer-one-id", taskIdCounter);
-//             taskIdCounter++;
-//             answerList.appendChild(answerBtnOne);
-//             console.log(answerBtnOne);
+        var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
+            answerBtnOne.className="btn-answer";
+            answerBtnOne.textContent = "1correct";
+            answerBtnOne.id = "q-2-correct";
+            answerList.appendChild(answerBtnOne);
+           
         
-//         var answerBtnTwo = document.createElement("ListItemButton");
-//         answerBtnTwo.className="btn-answer";
-//         answerBtnTwo.innerHTML = "2false";
-//         answerBtnTwo.setAttribute("answer-one-id", taskIdCounter);
-//             taskIdCounter++;
-//         answerList.appendChild(answerBtnTwo);
-//         console.log(answerBtnTwo);
+        var answerBtnTwo = document.createElement("ListItemButton");
+            answerBtnTwo.className="btn-answer";
+            answerBtnTwo.textContent = "2false";
+            answerBtnTwo.id ="answer-two";
+            answerList.appendChild(answerBtnTwo);
+       
       
-//         var answerBtnThree = document.createElement("ListItemButton");
-//         answerBtnThree.className="btn-answer";
-//         answerBtnThree.innerHTML = "3Correct";
-//         answerBtnThree.setAttribute("answer-one-id", taskIdCounter);
-//         taskIdCounter++;
-//         answerList.appendChild(answerBtnThree);
-//         console.log(answerBtnThree);
+        var answerBtnThree = document.createElement("ListItemButton");
+            answerBtnThree.className="btn-answer";
+            answerBtnThree.textContent = "3fase";
+            answerBtnThree.id = "answer-three";
+            answerList.appendChild(answerBtnThree);
+        
 
-//         var answerBtnFour = document.createElement("ListItemButton");
-//         answerBtnFour.className="btn-answer";
-//         answerBtnFour.innerHTML = "4false";
-//         answerBtnFour.setAttribute("answer-one-id", taskIdCounter);
-//         taskIdCounter++;
-//         answerList.appendChild(answerBtnFour);
-//         console.log(answerBtnFour);      
-//     };
-// createAnswerList();
+        var answerBtnFour = document.createElement("ListItemButton");
+            answerBtnFour.className="btn-answer";
+            answerBtnFour.textContent = "4false";
+            answerBtnFour.id="answer-four";
+            answerList.appendChild(answerBtnFour);
+
+        answerList.addEventListener("click", userSecondAnswer);  
+    };
+    createAnswerList();
+};
+
+var userSecondAnswer = function eventHandeler() {
+    console.log(event.target);
+    if (event.target.matches('#q-2-correct')) {
+        console.log ("correct");
+ 
+        // add value to score
+        userSecondAnswer = (userFirstAnswer + (userScore + 20));
+        console.log(userSecondAnswer);
+
+        // when click button, present next question
+        questionPage2();
+
+    } else {
+        console.log ("false");
+        // when click button, present next question
+        questionPage2();
+        // decrease value to score
+        userSecondAnswer = (userFirstAnswer + (userScore - 20));
+        console.log(userSecondAnswer);
+    }
+};
+
 // // create top border with returned value in h2 under answer buttons
 //     // var returnAnswerOne = document.createElement("div")
 //     // answerList.appendChild(returnAnswerOne);
