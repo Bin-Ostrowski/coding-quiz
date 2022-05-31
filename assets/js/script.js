@@ -26,7 +26,7 @@ var createWelcomePage = function (){
     welcomeContent.id = "welcome-page";
     var welcomePageTitle = welcomeContent.innerHTML ='<h1 id="title-question" class = "title-question">Coding Quiz Challenge</h1>'
     + '<p id="content-text" class = "content-text">Try to answer the following code-related questions within the time limit.' 
-    + 'Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>'
+    + ' Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>'
     + '<div id="buttons" class = "buttons"><button id="start-btn" class = "start-btn">Start Quiz</button></div>';
   
 };
@@ -212,6 +212,7 @@ var userSecondAnswer = function eventHandeler() {
     }
 };
 
+// "All Done!" - h1
 var allDone = function () {
     function clearcontent(elementID) {
         document.getElementById(elementID).innerHTML = "";
@@ -227,12 +228,13 @@ var allDone = function () {
         allDoneTitle.className = "title-question";
         allDoneTitle.textContent = "All done!"
         allDonePage.appendChild(allDoneTitle);
-
+//"Your final score is __."
     var finalScore = document.createElement ("h2");
         finalScore.className = "final-score-content"
         finalScore.textContent = "Your final score is " + " .";//add final score 
         allDonePage.appendChild(finalScore);
 
+//"Enter your initials:" form input with "Submit" bottom
     var enterYourInitials = document.createElement('div');
         enterYourInitials.className= "enter-initials"
         enterYourInitials.innerHTML = '<h2 id="final-score-content">Enter initials:</h2>';
@@ -244,16 +246,51 @@ var allDone = function () {
         enterYourInitials.appendChild(formEl);
         console.log(formEl);
 
-        formEl.innerHTML='<input id="initials-input" class ="initials-input"></input><button class="start-btn" id ="form-button" type="submit">Submit</button>';
-   
+        formEl.innerHTML='<input name="initials-input" class ="initials-input"></input><button class="submit-btn" id ="form-button" type="submit">Submit</button>';
+        formEl.addEventListener("submit", highScore);
 };
 
+//save initials and score to localStorage
+// return initals in CAPS
+var highScore = function(event){
+    event.preventDefault();
+ 
 
+    var userInitials = document.querySelector("input[name='initials-input']").value.toUpperCase();
+        console.log (userInitials);
+        localStorage.setItem("high scores", userInitials);
 
-// "All Done!" - h1
-//"Your final score is __."
-// add assigned integers from correct answers and display
-//"Enter your initials:" form input with place holder text "initials" "Submit" bottom
+    // highScoreListEl.setAttribute
+    // console.log
+
+    highScorePage();
+};
+
+var highScorePage = function (){
+    function clearcontent(elementID) {
+        document.getElementById(elementID).innerHTML = "";
+    }
+    startBtn = clearcontent('page-content');
+    
+    var highScoreDiv = document.createElement("div");
+        highScoreDiv.className = "question-page";
+        highScoreDiv.id = "question-page";
+        newPage.appendChild(highScoreDiv);
+
+    var highScoreTitle = document.createElement ("h1");
+        highScoreTitle.className = "title-question";
+        highScoreTitle.textContent = "High scores"
+        highScoreDiv.appendChild(highScoreTitle);
+
+    var highScoresContainer = document.createElement("ol");
+        highScoresContainer.className = "high-scores-container";
+        highScoreDiv.appendChild(highScoresContainer);
+
+    var highScoreListEl = document.createElement('li');
+        highScoreListEl.className = "high-score-list-el";
+        highScoreListEl.textContent = localStorage.getItem()
+    };
+
 // return initals in CAPS
 // top border with returned value in h2 under form input
 //when hover over button - return value dissapears
@@ -268,7 +305,3 @@ var allDone = function () {
 
 
 startBtn.addEventListener("click", questionPage1);
-// userFirstAnswer.addEventListener('click', questionPage2)
-// userFirstAnswer.addEventListener('click', //attach score
-// )
-// highScoreBtn.addEventListener("click", highScoresPage)
