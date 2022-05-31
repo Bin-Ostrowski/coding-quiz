@@ -12,6 +12,22 @@ var userResult = 0;
 //"start Quiz button";
 // the counter in top right corner
 // view high score link in top left corner
+var headerEl = document.createElement("header");
+    headerEl.id = "header-id";
+    document.body.appendChild(headerEl); // how to get this above script?
+
+var highScoreBtn = document.createElement("button");
+    highScoreBtn.className = "high-score-btn";
+    highScoreBtn.id = "high-score-btn";
+    highScoreBtn.textContent = "View High Scores"
+    headerEl.appendChild(highScoreBtn);
+
+var countdownEl = document.createElement("div");
+    countdownEl.className = "countdown";
+    countdownEl.id = "countdown";
+    countdownEl.textContent = "Time: "
+    headerEl.appendChild(countdownEl); //add countdown
+
 var newPage = document.createElement("main")
     newPage.className = "page-content";
     newPage.id = "page-content";
@@ -270,12 +286,13 @@ var highScorePage = function (){
     function clearcontent(elementID) {
         document.getElementById(elementID).innerHTML = "";
     }
-    startBtn = clearcontent('page-content');
+    highScoreBtn = clearcontent('page-content');
     
     var highScoreDiv = document.createElement("div");
         highScoreDiv.className = "question-page";
         highScoreDiv.id = "question-page";
         newPage.appendChild(highScoreDiv);
+        console.log(highScoreDiv);
 
     var highScoreTitle = document.createElement ("h1");
         highScoreTitle.className = "title-question";
@@ -305,3 +322,4 @@ var highScorePage = function (){
 
 
 startBtn.addEventListener("click", questionPage1);
+highScoreBtn.addEventListener("click", highScorePage);
