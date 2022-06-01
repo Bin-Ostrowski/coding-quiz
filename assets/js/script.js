@@ -22,11 +22,22 @@ var highScoreBtn = document.createElement("button");
     highScoreBtn.textContent = "View High Scores"
     headerEl.appendChild(highScoreBtn);
 
-var countdownEl = document.createElement("div");
-    countdownEl.className = "countdown";
-    countdownEl.id = "countdown";
-    countdownEl.textContent = "Time: "
-    headerEl.appendChild(countdownEl); //add countdown
+const timerEl = document.createElement("div");
+    headerEl.appendChild(timerEl); //add countdown
+    timerEl.className = "countdown";
+    timerEl.id = "countdown";
+    let originalTimer = 75;
+    timerEl.textContent = ("Time: " + 0);
+    function countdown(time) {
+         if(time<=0) return;
+        setTimeout(function() {
+        timerEl.textContent = ("Time: " + time);
+        time--;
+        countdown(time);
+    }, 1000)
+    }
+
+
 
 var newPage = document.createElement("main")
     newPage.className = "page-content";
@@ -51,10 +62,13 @@ createWelcomePage();
 //when click "start" quiz begins
 var startBtn = document.getElementById("start-btn");
 
-//coundown starts from 75 seconds
+
 
 // create object with:questions, list of 4 questions, and result  
 var questionPage1 = function () {
+    //coundown starts from 75 seconds
+    countdown(originalTimer);
+
     function clearcontent(elementID) {
         document.getElementById(elementID).innerHTML = "";
     }
