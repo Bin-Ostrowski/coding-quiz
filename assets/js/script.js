@@ -4,24 +4,19 @@ var taskIdCounter = 0;
 var userScore = 0;
 var userResult = 0;
 
-//var firstAnswer = //what user first answer was 
 
-
-// when page loads: "Coding Quiz Challenge h1", 
-//"p text underneth", 
-//"start Quiz button";
-// the counter in top right corner
-// view high score link in top left corner
 var headerEl = document.createElement("header");
     headerEl.id = "header-id";
     document.body.appendChild(headerEl); // how to get this above script?
 
+// view high score link in top left corner
 var highScoreBtn = document.createElement("button");
     highScoreBtn.className = "high-score-btn";
     highScoreBtn.id = "high-score-btn";
     highScoreBtn.textContent = "View High Scores"
     headerEl.appendChild(highScoreBtn);
 
+// the counter in top right corner
 const timerEl = document.createElement("div");
     headerEl.appendChild(timerEl); //add countdown
     timerEl.className = "countdown";
@@ -29,15 +24,17 @@ const timerEl = document.createElement("div");
     let originalTimer = 75;
     timerEl.textContent = ("Time: " + 0);
     function countdown(time) {
-         if(time<=0) return;
+         if(time<=0){
+            allDone();
+            return;
+         } 
         setTimeout(function() {
         timerEl.textContent = ("Time: " + time);
         time--;
         countdown(time);
-    }, 1000)
-    }
-
-
+        }, 1000)
+    };
+// penalize wrong answers by 10 seconds
 
 var newPage = document.createElement("main")
     newPage.className = "page-content";
@@ -46,11 +43,15 @@ var newPage = document.createElement("main")
     var pageContentEl = document.querySelector("#page-content");
     console.log(pageContentEl);
 
+// when page loads: "Coding Quiz Challenge h1", 
 var createWelcomePage = function (){ 
     var welcomeContent = document.createElement("div");
     newPage.appendChild(welcomeContent);
     welcomeContent.className = "welcome-page";
     welcomeContent.id = "welcome-page";
+
+    //"p text underneth", 
+    //"start Quiz button";
     var welcomePageTitle = welcomeContent.innerHTML ='<h1 id="title-question" class = "title-question">Coding Quiz Challenge</h1>'
     + '<p id="content-text" class = "content-text">Try to answer the following code-related questions within the time limit.' 
     + ' Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>'
@@ -61,7 +62,6 @@ createWelcomePage();
 
 //when click "start" quiz begins
 var startBtn = document.getElementById("start-btn");
-
 
 
 // create object with:questions, list of 4 questions, and result  
@@ -87,42 +87,40 @@ var questionPage1 = function () {
        
     // list 4 buttons - assign id's to each button
     // :hover applied to all buttons to turn color - also removes returned answer
-
     var createAnswerList = function(){
         var answerList = document.createElement("ol"); // why is this not listing with numbers?
-        answerList.className = "answer-list";
-        answerList.id = "answer-list-one";
-        questionPage.appendChild(answerList);
+            answerList.className = "answer-list";
+            answerList.id = "answer-list-one";
+            questionPage.appendChild(answerList);
         
         var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
             answerBtnOne.className="btn-answer";
             answerBtnOne.textContent = "1false";
             answerBtnOne.id = "answer-one";
             answerList.appendChild(answerBtnOne);
-           
         
-            var answerBtnTwo = document.createElement("ListItemButton");
+        var answerBtnTwo = document.createElement("ListItemButton");
             answerBtnTwo.className="btn-answer";
             answerBtnTwo.textContent = "2false";
             answerBtnTwo.id ="answer-two";
             answerList.appendChild(answerBtnTwo);
-       
       
         var answerBtnThree = document.createElement("ListItemButton");
-        answerBtnThree.className="btn-answer";
-        answerBtnThree.textContent = "3Correct";
-        answerBtnThree.id = "q-1-correct";
-        answerList.appendChild(answerBtnThree);
+            answerBtnThree.className="btn-answer";
+            answerBtnThree.textContent = "3Correct";
+            answerBtnThree.id = "q-1-correct";
+            answerList.appendChild(answerBtnThree);
         
 
         var answerBtnFour = document.createElement("ListItemButton");
-        answerBtnFour.className="btn-answer";
-        answerBtnFour.textContent = "4false";
-        answerBtnFour.id="answer-four";
-        answerList.appendChild(answerBtnFour);
-       
+            answerBtnFour.className="btn-answer";
+            answerBtnFour.textContent = "4false";
+            answerBtnFour.id="answer-four";
+            answerList.appendChild(answerBtnFour);
+    
         answerList.addEventListener("click", userFirstAnswer);
     };
+
     createAnswerList();
 };
 
@@ -203,10 +201,9 @@ var questionPage2 = function () {
             answerBtnFour.textContent = "4false";
             answerBtnFour.id="answer-four";
             answerList.appendChild(answerBtnFour);
-    // create top border with returned value in h2 under answer buttons
-    // var returnAnswerOne = document.createElement("div")
-    // answerList.appendChild(returnAnswerOne);
-    // returnAnswerOne.innerHTML = ('<h2 id = "result" class ="result">' + //returned answer</h2>')
+
+    // create top border with returned value in h2 under answer buttons - not sure why this isn't working
+   
 
         var resultQuestionOne = document.createElement("h2");
             resultQuestionOne.className = "answer-result";
@@ -221,10 +218,11 @@ var questionPage2 = function () {
         answerList.addEventListener("click", userSecondAnswer);  
     };
     createAnswerList();
-    //mouse over - result dissapears 
+    //mouse over - result dissapears - did not complete
+
 };
 
-var userSecondAnswer = function eventHandeler() {
+var userSecondAnswer = function eventHandeler(event) {
     console.log(event.target);
     if (event.target.matches('#q-2-correct')) {
         console.log ("correct");
@@ -258,10 +256,10 @@ var allDone = function () {
         allDoneTitle.className = "title-question";
         allDoneTitle.textContent = "All done!"
         allDonePage.appendChild(allDoneTitle);
-//"Your final score is __."
+//"Your final score is __."  
     var finalScore = document.createElement ("h2");
         finalScore.className = "final-score-content"
-        finalScore.textContent = "Your final score is " + " .";//add final score 
+        finalScore.textContent = "Your final score is " + userSecondAnswer + " .";//add final score - fix when more questions are added
         allDonePage.appendChild(finalScore);
 
 //"Enter your initials:" form input with "Submit" bottom
@@ -282,20 +280,22 @@ var allDone = function () {
 
 //save initials and score to localStorage
 // return initals in CAPS
+// top border with returned value in h2 under form input
+//when hover over button - return value dissapears
 var highScore = function(event){
     event.preventDefault();
  
-
     var userInitials = document.querySelector("input[name='initials-input']").value.toUpperCase();
         console.log (userInitials);
         localStorage.setItem("high scores", userInitials);
 
-    // highScoreListEl.setAttribute
-    // console.log
-
     highScorePage();
 };
 
+//"High Scores" -h1
+// does not show header
+// list high scores with 1. 2. 3. 
+// display form input with "initals - score"
 var highScorePage = function (){
     function clearcontent(elementID) {
         document.getElementById(elementID).innerHTML = "";
@@ -322,14 +322,8 @@ var highScorePage = function (){
         highScoreListEl.textContent = localStorage.getItem()
     };
 
-// return initals in CAPS
-// top border with returned value in h2 under form input
-//when hover over button - return value dissapears
 
-//"High Scores" -h1
-// does not show header
-// list high scores with 1. 2. 3. 
-// display form input with "initals - score"
+
 // buttons: "Go back" "Clear high score"
 // go back returns to welcome page
 // clear high score- clears high scores.
