@@ -337,3 +337,72 @@ var highScorePage = function (){
 
 startBtn.addEventListener("click", questionPage1);
 highScoreBtn.addEventListener("click", highScorePage);
+
+// examples to refactor code for re-submission
+
+// const questionArr = [
+//     {
+//     text: 'what is your favorite food?',
+//     a: 'hotdog',
+//     b:'pizza',
+//     c: 'cake',
+//     correctAnswer: 'c',
+//     }
+//     {
+//         text: 'question 2',
+//         a: 'hotdog',
+//         b:'pizza',
+//         c: 'cake',
+//         correctAnswer: 'c',
+//         }
+// ]
+
+// let time = 100;
+// const timeDisplay= document.createElement('div');
+// document.body.append(timeDisplay);
+
+
+// const timer = setInterval(function(){
+//     document.body.append(time)
+//     time--;
+// }, 1000);
+
+// function subtractTime(){
+//     time -= 5; // for when get answer wrong
+// };
+
+// let questionCount = 0;
+
+// function renderQuestion(){
+//     const question = document.createElement('div');
+//     const text = questionArr[questionCount].text;
+//     const a = questionArr[questionCount.a];
+//     const b = questionArr[questionCount.b];
+//     const c = questionArr[questionCount.c];
+
+//     function createDivs () {
+//         const aDiv = document.createElement('div');
+//         aDiv.textContent = a;
+//         const textDiv = document.createElement('div');
+//         textDiv.textContent =text;
+
+//         constbDiv = document.createElement('div');
+// ;
+//     }
+//     question.append(text,a,b,c);
+//     question.addEventListener('click', function (event) {
+//         if(event.target === questionArr[questionCount].correctAnswer) {
+//             alert('correct');
+//             questionCount++
+//         } else {
+//             subtractTime();
+//         }
+//     })
+// }
+// function app() {
+//     while(questionCount < 3){
+//         renderQuestion();
+//     }
+// }
+
+// app();
