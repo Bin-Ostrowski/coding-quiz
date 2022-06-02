@@ -130,7 +130,7 @@ var questionPage1 = function () {
 // clicked false buttonId (3 out of 4)- return "wrong" underneath border
 // click correct buttonId - return "correct with logged points"
 
-var userFirstAnswer = function eventHandeler() {
+var userFirstAnswer = function eventHandeler(event) {
     console.log(event.target);
     if (event.target.matches('#q-1-correct')) {
         console.log ("correct");
