@@ -82,7 +82,7 @@ var questionPage1 = function () {
     var question1 = document.createElement ("h1");
         question1.className = "title-question";
         question1.id = "first-question";
-        question1.innerHTML = "First Question";
+        question1.innerHTML = "Commonly used data types DO NOT include:";
         questionPage.appendChild(question1);
        
     // list 4 buttons - assign id's to each button
@@ -95,26 +95,26 @@ var questionPage1 = function () {
         
         var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
             answerBtnOne.className="btn-answer";
-            answerBtnOne.textContent = "1false";
+            answerBtnOne.textContent = "Strings";
             answerBtnOne.id = "answer-one";
             answerList.appendChild(answerBtnOne);
         
         var answerBtnTwo = document.createElement("ListItemButton");
             answerBtnTwo.className="btn-answer";
-            answerBtnTwo.textContent = "2false";
+            answerBtnTwo.textContent = "Numbers";
             answerBtnTwo.id ="answer-two";
             answerList.appendChild(answerBtnTwo);
       
         var answerBtnThree = document.createElement("ListItemButton");
             answerBtnThree.className="btn-answer";
-            answerBtnThree.textContent = "3Correct";
+            answerBtnThree.textContent = "Alerts";
             answerBtnThree.id = "q-1-correct";
             answerList.appendChild(answerBtnThree);
         
 
         var answerBtnFour = document.createElement("ListItemButton");
             answerBtnFour.className="btn-answer";
-            answerBtnFour.textContent = "4false";
+            answerBtnFour.textContent = "Booleans";
             answerBtnFour.id="answer-four";
             answerList.appendChild(answerBtnFour);
     
@@ -134,7 +134,7 @@ var userFirstAnswer = function eventHandeler(event) {
         console.log ("correct");
 
         // add value to score
-        userFirstAnswer = (userScore + 20);
+        userFirstAnswer = (userScore + 10);
         console.log(userFirstAnswer);
         userResult = (userResult + 1);
         console.log(userResult);
@@ -145,7 +145,7 @@ var userFirstAnswer = function eventHandeler(event) {
     } else {
         console.log ("false");
         // decrease value to score
-        userFirstAnswer = (userScore - 20);
+        userFirstAnswer = (userScore);
         console.log(userFirstAnswer);
         userResult = (userResult = null);
         console.log(userResult);
@@ -168,7 +168,7 @@ var questionPage2 = function () {
     var question1 = document.createElement ("h1");
         question1.className = "title-question";
         question1.id = "Second-question";
-        question1.innerHTML = "Second Question";
+        question1.innerHTML = "The condition in an if / else statement is enclosed with __________.";
         questionPage.appendChild(question1);
 
     var createAnswerList = function(){
@@ -179,26 +179,26 @@ var questionPage2 = function () {
         
         var answerBtnOne = answerBtnOne = document.createElement("ListItemButton");
             answerBtnOne.className="btn-answer";
-            answerBtnOne.textContent = "1correct";
+            answerBtnOne.textContent = "Parenthesis";
             answerBtnOne.id = "q-2-correct";
             answerList.appendChild(answerBtnOne);
         
         var answerBtnTwo = document.createElement("ListItemButton");
             answerBtnTwo.className="btn-answer";
-            answerBtnTwo.textContent = "2false";
+            answerBtnTwo.textContent = "Quotes";
             answerBtnTwo.id ="answer-two";
             answerList.appendChild(answerBtnTwo);
       
         var answerBtnThree = document.createElement("ListItemButton");
             answerBtnThree.className="btn-answer";
-            answerBtnThree.textContent = "3fase";
+            answerBtnThree.textContent = "Curly Brackets";
             answerBtnThree.id = "answer-three";
             answerList.appendChild(answerBtnThree);
         
 
         var answerBtnFour = document.createElement("ListItemButton");
             answerBtnFour.className="btn-answer";
-            answerBtnFour.textContent = "4false";
+            answerBtnFour.textContent = "Square Brackets";
             answerBtnFour.id="answer-four";
             answerList.appendChild(answerBtnFour);
 
@@ -226,14 +226,14 @@ var userSecondAnswer = function eventHandeler(event) {
     console.log(event.target);
     if (event.target.matches('#q-2-correct')) {
         console.log ("correct");
-        userSecondAnswer = (userFirstAnswer + (userScore + 20));
+        userSecondAnswer = (userFirstAnswer + (userScore + 10));
         console.log(userSecondAnswer);
 
         allDone();//fix when add all questions
 
     } else {
         console.log ("false");
-        userSecondAnswer = (userFirstAnswer + (userScore - 20));
+        userSecondAnswer = (userFirstAnswer + (userScore));
         console.log(userSecondAnswer);
 
         allDone();//fix when add all questions
